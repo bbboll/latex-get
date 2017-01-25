@@ -1,17 +1,23 @@
 package main
 
 import (
+	"errors"
 	"flag"
 	"fmt"
-	"errors"
+	"io/ioutil"
 	"path/filepath"
 )
 
 // command types
 const (
-	CommandCreate = "create"
-	CommandList = "list"
+	CommandCreate   = "create"
+	CommandList     = "list"
 	CommandDescribe = "describe"
+)
+
+// filename choices
+const (
+	FilenameDescription = ".templ_description"
 )
 
 func main() {
@@ -25,7 +31,7 @@ func main() {
 	// grab user input
 	args := flag.Args()
 	if len(args) == 0 {
-		fmt.Println("Please provide command to be executed!")
+		fmt.Println("Please provide a command to be executed!")
 		help()
 		return
 	}
@@ -33,39 +39,39 @@ func main() {
 	// execute command
 	command := args[0]
 	switch command {
-		case CommandCreate:
-			if len(args) < 3 {
-				fmt.Println("Please provide template name and output directory!")
-				return
-			}
-			create(args[1], args[2])
-		case CommandList:
-			list()
+	case CommandCreate:
+		if len(args) < 3 {
+			fmt.Println("Please provide template name and output directory!")
 			return
-		case CommandDescribe:
-			if len(args) < 2 {
-				fmt.Println("Please provide template name!")
-				return
-			}
-			describe(args[1])
+		}
+		create(args[1], args[2])
+	case CommandList:
+		list()
+		return
+	case CommandDescribe:
+		if len(args) < 2 {
+			fmt.Println("Please provide template name!")
 			return
-		default:
-			fmt.Printf("Command not found: %s\n", command)
-			help()
-			return
+		}
+		describe(args[1])
+		return
+	default:
+		fmt.Printf("Command not found: %s\n", command)
+		help()
+		return
 	}
 }
 
 func help() {
-	fmt.Println("This tool provides access to a selection of LaTeX templates.\n\n"+
-					"Usage: $ latex-get [-flags] [command] <template name> <out directory>\n\n"+
-					"Available commands:\n"+
-					"	create:		paste template into out directory\n"+
-					"	list:		list available templates\n"+
-					"	describe: 	show description for template")
+	fmt.Println("This tool provides access to a selection of LaTeX templates.\n\n" +
+		"Usage: $ latex-get [-flags] [command] <template name> <out directory>\n\n" +
+		"Available commands:\n" +
+		"	create:		paste template into out directory\n" +
+		"	list:		list available templates\n" +
+		"	describe: 	show description for template")
 }
 
-// create a new latex file structure from 
+// create a new latex file structure from
 // the passed template name
 func create(templ, outDir string) {
 	// find template directory
@@ -82,8 +88,8 @@ func create(templ, outDir string) {
 
 	// copy to out dir if possible
 	if dirExists(outDir) {
-		// TODO copy template to out dir
-		copyDir()
+		// copy template to out dir
+		copyDirContents(tmplPath, outDir)
 	} else {
 		fmt.Printf("Output directory '%s' does not exists.", outDir)
 	}
@@ -95,9 +101,22 @@ func list() {
 	tmplDir, err := getTemplateDir()
 	if err != nil {
 		fmt.Println(err.Error())
+		return
 	}
 
-	// TODO list template directory contents
+	// list contents
+	contents, err := ioutil.ReadDir(tmplDir)
+	if err != nil {
+		return
+	}
+
+	// print tempalte names
+	println()
+	for _, template := range contents {
+		fmt.Printf("%s\n%s\n\n", 
+			template.Name(), 
+			getTemplateDescription(filepath.Join(tmplDir, template.Name())))
+	}
 }
 
 // describe a passed template
@@ -108,7 +127,8 @@ func describe(templ string) {
 		fmt.Println(err.Error())
 	}
 
-	// TODO output template description
+	descr := getTemplateDescription(filepath.Join(tmplDir, templ))
+	fmt.Printf("Template %s:\n%s", templ, descr)
 }
 
 func getTemplateDir() (string, error) {
@@ -128,4 +148,12 @@ func getTemplate(tmplDir, name string) (string, error) {
 		return dir, nil
 	}
 	return "", errors.New("Template not found")
+}
+
+func getTemplateDescription(tmplPath string) string {
+	descr, err :=  ioutil.ReadFile(filepath.Join(tmplPath, FilenameDescription))
+	if err != nil {
+		return "No description available."
+	}
+	return string(descr)
 }
