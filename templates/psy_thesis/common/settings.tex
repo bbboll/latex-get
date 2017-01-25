@@ -1,0 +1,44 @@
+% german figure descriptors
+\renewcommand{\listtablename}{Tabellen}
+\renewcommand{\listfigurename}{Bilder}
+\renewcommand{\contentsname}{Inhalt}
+
+% common units
+\newcommand{\ms}{\si{\ms}}
+
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+
+% setup captions
+\usepackage{caption}
+\captionsetup[table]{singlelinecheck=off,skip=5pt,justification=raggedright,format=plain}
+\captionsetup[figure]{labelfont=it}
+
+% setup indentation for paragraph starts
+\setlength{\parindent}{1.5cm}
+
+\setmainfont{Arial}
+\setromanfont[Mapping=tex-text]{Arial} 
+\setkomafont{disposition}{\fontspec{Arial}\bfseries} % setup font for all headings
+
+% setu heading size
+\addtokomafont{chapter}{\fontsize{18}{26}\selectfont}
+\addtokomafont{section}{\fontsize{16}{24}\selectfont}
+\addtokomafont{subsection}{\fontsize{14}{22}\selectfont}
+\addtokomafont{subsubsection}{\fontsize{12}{20}\selectfont}
+
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\dbltopfraction}{0.95}
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{d}[1]{D{.}{.}{#1}}
+
+% remove double periods in headings
+\renewcommand{\thechapter}{\arabic{chapter}}
+\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
+\renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
+\renewcommand{\autodot}{}% remove all end-of-counter periods
+\makeatother
+

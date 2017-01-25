@@ -1,0 +1,102 @@
+% Your Name Here
+% !TEX program = xelatex
+% !TEX encoding = UTF-8 Unicode
+\documentclass[a4paper,12pt]{scrreprt}
+
+\newcommand*{\RootPath}{.}
+\input{\RootPath/common/imports}
+\input{\RootPath/common/settings}
+
+\addbibresource{\RootPath/bib/psy.bib}
+
+\begin{document}
+
+% custom headings for titlepage
+\pagestyle{scrheadings}
+\clearscrheadfoot
+\ihead{} % inner head
+\chead{} % center head
+\ohead{} % outer head
+\ifoot{} % innter foot
+\cfoot[]{} % center foot
+\ofoot[\pagemark]{\pagemark} % outer foot
+
+% columntypes for tables
+\input{\RootPath/tables/00_coltypes}
+
+% no pagenumbering for Titlepage and Abstract
+\pagenumbering{none}
+
+% Titelseite
+\input{\RootPath/chapters/00_titlepage}
+
+% abstract
+\input{\RootPath/chapters/01_abstract}
+
+% römische~ seitenzahlen
+\pagenumbering{Roman}
+
+% TOC and lists of figures and tables
+\tableofcontents
+\listoffigures
+\listoftables
+\newpage
+
+% arabic pagenumbering for document body
+\pagenumbering{arabic}
+
+% reset page counter after TOC block
+\setcounter{page}{1}
+\newpage
+\newpage
+
+% render chapters
+\input{\RootPath/chapters/02_introduction}
+\input{\RootPath/chapters/03_method}
+\input{\RootPath/chapters/04_results}
+\input{\RootPath/chapters/05_discussion}
+
+\newpage
+
+% bibliography prior to appendix
+\printbibliography
+
+
+\newpage
+\appendix
+\input{\RootPath/chapters/06_appendix}
+
+%% --- The following is an optional alternative for appendix rendering -- %%
+
+% don't count tables for captions
+% \captionsetup[table]{list=no}
+% \captionsetup[threeparttable]{list=no}
+% \captionsetup[longtable]{list=no}
+% \setcounter{table}{0}
+
+% \renewcommand{\thetable}{A-\arabic{table}}
+% \input{\RootPath/chapters/05_appendix_A}
+
+% \setcounter{table}{0}
+% \renewcommand{\thetable}{B-\arabic{table}}
+% \input{\RootPath/chapters/05_appendix_B}
+
+% \setcounter{table}{0}
+% \renewcommand{\thetable}{C-\arabic{table}}
+% \input{\RootPath/chapters/05_appendix_C}
+
+% \setcounter{table}{0}
+% \renewcommand{\thetable}{D-\arabic{table}}
+% \input{\RootPath/chapters/05_appendix_D}
+
+% \setcounter{table}{0}
+% \renewcommand{\thetable}{E-\arabic{table}}
+% \input{\RootPath/chapters/05_appendix_E}
+
+%% --   -- %%
+
+
+% declaration at the end
+\input{\RootPath/chapters/07_declaration}
+
+\end{document}

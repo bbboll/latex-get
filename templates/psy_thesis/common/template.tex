@@ -1,0 +1,82 @@
+% quotes
+\begin{quote}
+  \centering
+  \emph{„Leidenschaft hingegen wünscht sich kein Mensch. Denn wer will sich in Ketten legen lassen, wenn er frei sein kann?“ (Kant, 1798).}
+\end{quote}
+
+% figures
+\begin{figure}[ht]
+\includegraphics[width=\textwidth]{\RootPath/graphics/graphic.png}
+\caption[Short Description]{Full Description}
+\end{figure}
+
+% normal table
+\begin{table}
+	\centering
+	\begin{threeparttable}
+		\caption{\emph{Your table caption here}}
+		\small
+		\begin{tabular}[c]{cc}
+			\toprule
+			A & B \\
+			\midrule
+			1 & 2 \\
+			1 & 2 \\
+			1 & 2 \\
+			1 & 2 \\
+			1 & 2 \\
+			\bottomrule
+		\end{tabular}
+		\begin{tablenotes}
+			\footnotesize
+			\item Note that...
+		\end{tablenotes}
+	\end{threeparttable}
+\end{table}
+
+% multi-page table
+\begin{ThreePartTable}
+  \begin{TableNotes}
+		\footnotesize
+		\item Note that...
+  \end{TableNotes}
+  \small
+  \begin{longtable}[l]{p{.5cm}p{8.5cm}C{.8cm}C{.8cm}C{.7cm}R{.8cm}R{.9cm}}
+    \caption{\emph{Your table caption here}}\\
+    \toprule
+      A & B & C & D & E & F & G \\
+    \midrule
+    \endfirsthead
+
+    \multicolumn{7}{c}{\tablename\ \thetable{} -- continued from previous page}\\
+      \toprule
+        A & B & C & D & E & F & G \\
+      \midrule
+    \endhead
+
+    \midrule
+    \multicolumn{7}{r}{{Continued on next page}} \\
+    \midrule
+    \endfoot
+    \bottomrule
+    \insertTableNotes
+    \endlastfoot
+    	1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+		1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+		1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+		1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+		1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+		1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+		1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+		1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+		1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+		%
+		% ...
+		%
+		1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+		1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+		1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+		1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+  \bottomrule
+  \end{longtable}
+\end{ThreePartTable}
