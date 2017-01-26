@@ -1,0 +1,43 @@
+% Your Name Here
+% !TEX program = xelatex
+% !TEX encoding = UTF-8 Unicode
+% !TEX spellcheck = en_US
+
+\documentclass{scrreprt}
+
+\newcommand*{\RootPath}{../}
+\input{\RootPath/common/imports}
+\input{\RootPath/common/settings}
+\input{\RootPath/common/math}
+
+\addbibresource{\RootPath/bib/math.bib}
+
+\title{Main Title} 
+\subtitle{Nature of Work. Institution}
+\author{Your Name Here}
+\date{\today}
+
+\begin{document}
+
+\begin{spacing}{1}
+	\maketitle 
+\end{spacing}
+\tableofcontents
+
+\subsection*{Abstract}
+Your Abstract here.
+
+
+\input{\RootPath/chapters/01_introduction}
+
+\begin{appendices}
+	\input{\RootPath/appendices/01_appendix_a}
+\end{appendices}
+
+\newpage
+\listoffigures    
+\listoftables
+\printbibliography
+
+
+\end{document}
