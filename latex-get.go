@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
+	"github.com/kardianos/osext"
 )
 
 // command types
@@ -132,7 +133,10 @@ func describe(templ string) {
 }
 
 func getTemplateDir() (string, error) {
-	candidates := []string{"./templates", "../templates"}
+	binPath, _ := osext.Executable()
+	binDir, _ := filepath.Split(binPath)
+	candidates := []string{filepath.Join(binDir, "./templates"), 
+						filepath.Join(binDir, "../templates")}
 	for _, dir := range candidates {
 		if dirExists(dir) {
 			return dir, nil

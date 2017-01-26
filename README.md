@@ -2,8 +2,7 @@
 Quick and dirty tool to start LaTeX projects from a selection of templates.
 
 ## Installation
-Just clone this repository to your local machine. If you have a working Go environment, you can now `go run *.go`.
-Since this is a fairly early stage of development, no binary is provided with the source yet.
+Just clone this repository to your local machine. Executable binaries, suffixed with system and compile date, are provided within the `bin/` directory.
 
 ## Usage 
 *	List available templates:
