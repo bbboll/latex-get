@@ -6,9 +6,12 @@ Just clone this repository to your local machine. If you have a working Go envir
 Since this is a fairly early stage of development, no binary is provided with the source yet.
 
 ## Usage 
--	List available templates
+*	List available templates:
 	`go run *.go list`
--	Show description for a template (science_thesis)
+*	Show description for a template (science_thesis):
 	`go run *.go describe science_thesis`
--	Copy an instance of the selected template (science_thesis) into a destination path
+*	Copy an instance of the selected template (science_thesis) into a destination path:
 	`go run *.go create science_thesis /path/to/destination/`
+
+## Roadmap
+I might add the possibility to set a config file in the future. That way, most placeholder content within the templates can be filled with real data.

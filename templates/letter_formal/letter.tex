@@ -1,0 +1,30 @@
+% Your Name Here
+% !TEX program = xelatex
+% !TEX encoding = UTF-8 Unicode
+\documentclass[foldmarks=true,subject=left,subject=titled,version=last]{scrlttr2}
+
+\newcommand*{\RootPath}{.}
+
+\usepackage{polyglossia}
+\setmainlanguage{german}
+
+\date{\today}
+
+\begin{document}
+
+\setkomavar{fromname}[]{}
+\setkomavar{fromaddress}[]{}
+
+\setkomavar{fromphone}{}
+\setkomavar{fromemail}{}
+
+\renewcommand*{\raggedsignature}{\raggedright}
+
+\setkomavar{subject}{}
+
+\begin{letter}{Recipient address here}
+    \input{\RootPath/content}
+\end{letter}
+
+\end{document}
+

@@ -128,7 +128,7 @@ func describe(templ string) {
 	}
 
 	descr := getTemplateDescription(filepath.Join(tmplDir, templ))
-	fmt.Printf("Template %s:\n%s", templ, descr)
+	fmt.Printf("\nTemplate %s:\n%s\n\n", templ, descr)
 }
 
 func getTemplateDir() (string, error) {
