@@ -17,7 +17,7 @@ func dirExists(s string) bool {
 	return stat.IsDir()
 }
 
-// copy the contents of the source directory into the 
+// copy the contents of the source directory into the
 // destination directory
 func copyDirContents(src, dst string) error {
 	if !dirExists(src) || !dirExists(dst) {

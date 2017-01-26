@@ -113,8 +113,8 @@ func list() {
 	// print tempalte names
 	println()
 	for _, template := range contents {
-		fmt.Printf("%s\n%s\n\n", 
-			template.Name(), 
+		fmt.Printf("%s\n%s\n\n",
+			template.Name(),
 			getTemplateDescription(filepath.Join(tmplDir, template.Name())))
 	}
 }
@@ -151,7 +151,7 @@ func getTemplate(tmplDir, name string) (string, error) {
 }
 
 func getTemplateDescription(tmplPath string) string {
-	descr, err :=  ioutil.ReadFile(filepath.Join(tmplPath, FilenameDescription))
+	descr, err := ioutil.ReadFile(filepath.Join(tmplPath, FilenameDescription))
 	if err != nil {
 		return "No description available."
 	}
