@@ -1,0 +1,33 @@
+% Your Name Here
+% !TEX program = xelatex
+% !TEX encoding = UTF-8 Unicode
+\documentclass[a4paper,12pt]{scrartcl}
+
+\newcommand*{\RootPath}{.}
+\input{\RootPath/common/imports}
+\input{\RootPath/common/settings}
+
+% custom headings
+\pagestyle{scrheadings}
+\clearscrheadfoot
+\ihead{} % inner head
+\chead{} % center head
+\ohead{} % outer head
+\ifoot{} % innter foot
+\cfoot[]{} % center foot
+\ofoot[]{\pagemark} % outer foot
+
+\begin{document}
+
+\section{Übungsblatt 1} 
+
+% -- Your questions go here. Reference template.tex for kickstart --
+
+% print table of point results
+\input{\RootPath/points} 
+
+\newpage
+\section{Lösungen}
+\printsolutions 
+
+\end{document} 

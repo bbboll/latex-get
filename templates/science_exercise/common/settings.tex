@@ -1,0 +1,20 @@
+% hide section numbering
+\renewcommand*\sectionformat{}
+
+% localization
+\setmainlanguage{german}
+
+% couter setup for questions
+% Pass any string. 
+% The letters se (section), qu (question) and tsk (task) will be replaced with the respective counter
+% for each of these, a format may be specified with an additional argument in [brackets].
+% qu[1] for \arabic, qu[a] for \alph, qu[A] for \Alph, qu[r] for \roman, and qu[R] for \Roman
+\SetupExSheets{counter-format=se[1].qu[1]}
+
+% format for printing question points
+\SetupExSheets[points]{
+	name=Punkt/e,
+	bonus-name=Bonuspunkt/e
+	% number-format={\textit},
+	% bonus-format={\textit}
+}

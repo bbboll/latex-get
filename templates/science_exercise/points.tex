@@ -1,0 +1,8 @@
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{l*{\numberofquestions}{c}c}\hline
+		Aufgabe 	& \ForEachQuestion{\QuestionNumber{#1}\iflastquestion{}{&}} & Gesamt \\ \hline
+	  	Punkte   	& \ForEachQuestion{\GetQuestionProperty{points}{#1}\iflastquestion{}{&}} & \pointssum* \\ \hline
+	  	Erreicht  	& \ForEachQuestion{\iflastquestion{}{&}} & \\ \hline
+	\end{tabular}
+\end{table}
