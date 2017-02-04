@@ -6,11 +6,11 @@ Just clone this repository to your local machine. Executable binaries, suffixed 
 
 ## Usage 
 *	List available templates:
-	`go run *.go list`
+	`latex-get list`
 *	Show description for a template (science_thesis):
-	`go run *.go describe science_thesis`
+	`latex-get describe science_thesis`
 *	Copy an instance of the selected template (science_thesis) into a destination path:
-	`go run *.go create science_thesis /path/to/destination/`
+	`latex-get create science_thesis /path/to/destination/`
 
 ## Roadmap
 I might add the possibility to set a config file in the future. That way, most placeholder content within the templates can be filled with real data.
